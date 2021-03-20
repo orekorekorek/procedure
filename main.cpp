@@ -10,7 +10,7 @@ using namespace std;
  * \param x Параметр x
  * \param y Параметр y
  * \param z Параметр z
- * \return
+ * \return Возвращает результат расчета а
  */
 double GetA(const double x, const double y, const double z);
 /**
@@ -18,7 +18,7 @@ double GetA(const double x, const double y, const double z);
  * \param x Параметр x
  * \param y Параметр y
  * \param z Параметр z
- * \return
+ * \return Возвращает результат расчета b
  */
 double GetB(const double x, const double y, const double z);
 
