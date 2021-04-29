@@ -1,27 +1,23 @@
 #define _USE_MATH_DEFINES // for C++
-
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
 using namespace std;
 
 /**
- * \brief Функция для расчета a
- * \param x Параметр x
- * \param y Параметр y
- * \param z Параметр z
- * \return Возвращает результат расчета а
+ * \brief Функции перевода из байтов в мегабайты.
+ * \param bytes объем информации в байтах.
+ * \return Возвращает объем информации в мегабайтах.
  */
-double GetA(const double x, const double y, const double z);
-/**
- * \brief Функция для расчета b
- * \param x Параметр x
- * \param y Параметр y
- * \param z Параметр z
- * \return Возвращает результат расчета b
- */
-double GetB(const double x, const double y, const double z);
+double BytesToMegabytes(double bytes);
 
+/**
+ * \brief Функции перевода из мегабайтов в гигабайты.
+ * \param bytes объем информации в мегабайтах.
+ * \return Возвращает объем информации в гигабайтах.
+ */
+double MegabytesToGigabytes(double megabytes);
 
 /**
  * \brief Точка входа в программу
@@ -29,25 +25,26 @@ double GetB(const double x, const double y, const double z);
  */
 int main()
 {
-    const auto x = 2.0;
-    const auto y = 0.7;
-    const auto z = -1.0;
+    cout << "Input a capacity in bytes = ";
+    double capacityInBytes;
+    cin >> capacityInBytes;
 
-    const auto a = GetA(x, y, z);
-    const auto b = GetB(x, y, z);
+    const auto capacityInMegabytes = BytesToMegabytes(capacityInBytes);
+    const auto capacityInGigabytes = MegabytesToGigabytes(capacityInMegabytes);
 
-    cout << "x = " << x << ", y =  "<< y << ", z = " << z << "\n";
-    cout << "a = " << a << ", b = " << b << endl;
+    cout << setprecision(10)
+         << "\nThe capacity in MegaBytes is " << capacityInMegabytes
+         <<"\nThe capacity in GigaBytes is "<< capacityInGigabytes << endl;
 
     return 0;
 }
 
-double GetA (const double x, const double y, const double z)
+double BytesToMegabytes(const double bytes)
 {
-    return pow( (x * y * z) + abs(z * sin(y)) , 1.0 / 3.0);
+    return bytes / 1000000;
 }
 
-double GetB (const double x, const double y, const double z)
+double MegabytesToGigabytes(const double megabytes)
 {
-    return y * cos(x * z * sin(y)) + 3.0;
+    return megabytes / 1000;
 }
