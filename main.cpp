@@ -1,50 +1,31 @@
-#define _USE_MATH_DEFINES // for C++
-#include <iostream>
+#define _USE_MATH_DEFINES
+
 #include <cmath>
+#include <iostream>
 #include <iomanip>
 
 using namespace std;
-
 /**
- * \brief Функции перевода из байтов в мегабайты.
- * \param bytes объем информации в байтах.
- * \return Возвращает объем информации в мегабайтах.
+ * \brief Функциия для расчета y.
+ * \param x Параметр x.
+ * \return Возвращает значение y.
  */
-double BytesToMegabytes(double bytes);
-
-/**
- * \brief Функции перевода из мегабайтов в гигабайты.
- * \param bytes объем информации в мегабайтах.
- * \return Возвращает объем информации в гигабайтах.
- */
-double MegabytesToGigabytes(double megabytes);
-
+double GetValue(const double x);
 /**
  * \brief Точка входа в программу
  * \return Возвращает нуль, в случае успеха
  */
-int main()
-{
-    cout << "Input a capacity in bytes = ";
-    double capacityInBytes;
-    cin >> capacityInBytes;
+int main() {
+        double x = 1;
 
-    const auto capacityInMegabytes = BytesToMegabytes(capacityInBytes);
-    const auto capacityInGigabytes = MegabytesToGigabytes(capacityInMegabytes);
+        for (x; x < 2.1; x+=0.1) {
 
-    cout << setprecision(10)
-         << "\nThe capacity in MegaBytes is " << capacityInMegabytes
-         <<"\nThe capacity in GigaBytes is "<< capacityInGigabytes << endl;
+            double y = GetValue(x);
+            cout<<"x = "<< x << " " <<"y = "<< y << '\n';
 
-    return 0;
+        }
 }
 
-double BytesToMegabytes(const double bytes)
-{
-    return bytes / 1000000;
-}
-
-double MegabytesToGigabytes(const double megabytes)
-{
-    return megabytes / 1000;
+double GetValue(double x) {
+    return 0.1 * x * x - x * log(x);
 }
