@@ -5,46 +5,37 @@
 
 using namespace std;
 
-/**
- * \brief Функции перевода из байтов в мегабайты.
- * \param bytes объем информации в байтах.
- * \return Возвращает объем информации в мегабайтах.
- */
-double BytesToMegabytes(double bytes);
+int main() {
+int s = 0;
+int N;
 
-/**
- * \brief Функции перевода из мегабайтов в гигабайты.
- * \param bytes объем информации в мегабайтах.
- * \return Возвращает объем информации в гигабайтах.
- */
-double MegabytesToGigabytes(double megabytes);
+cout << "Enter the size of array" << endl;
+cin >> N;
+int array[N];
 
-/**
- * \brief Точка входа в программу
- * \return Возвращает нуль, в случае успеха
- */
-int main()
-{
-    cout << "Input a capacity in bytes = ";
-    double capacityInBytes;
-    cin >> capacityInBytes;
+    cout << "Enter the elements of array" << endl;
+    for (int i = 0; i < N; i++) {
+      cin >> array[i];
+    }
 
-    const auto capacityInMegabytes = BytesToMegabytes(capacityInBytes);
-    const auto capacityInGigabytes = MegabytesToGigabytes(capacityInMegabytes);
+        for (int i = 0; i <= N; i++) {
+          if (abs(array[i]) < 10)
+          s = s + array[i];
+        }
+        cout << "Sum of the elements that have number module < 10 = " << s <<endl;
 
-    cout << setprecision(10)
-         << "\nThe capacity in MegaBytes is " << capacityInMegabytes
-         <<"\nThe capacity in GigaBytes is "<< capacityInGigabytes << endl;
+        cout << "Indexes of elements that are over than next one "<<endl;
+        for (int i = 0; i < N; i++) {
+          if (array[i] > array[i+1])
+          cout << i << " ";
+        }
+        cout<<endl;
 
-    return 0;
-}
+        cout << "Elements of array that multiple of 3 and multiplied by third element of this array" << endl;
+        for (int i = 0; i < N; i++) {
+          if (array[i] % 3 == 0)
+          cout << array[i] * array[2] << " ";
+        }
+        cout<<endl;
 
-double BytesToMegabytes(const double bytes)
-{
-    return bytes / 1000000;
-}
-
-double MegabytesToGigabytes(const double megabytes)
-{
-    return megabytes / 1000;
 }
